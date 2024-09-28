@@ -1,0 +1,23 @@
+name: Compile C Program
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto si tu rama principal tiene otro nombre
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up GCC
+        run: sudo apt-get install -y gcc
+
+      - name: Compile C code
+        run: gcc mi_codigo.c -o programa
+
+      - name: Run the compiled program
+        run: ./programa
